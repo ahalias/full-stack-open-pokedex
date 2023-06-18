@@ -35,14 +35,14 @@ jobs:
         run: curl ${{ secrets.RENDER_HOOK }}
       - name: Successfull deployment
         uses: rjstone/discord-webhook-notify@v1.0.4
-        if: success()
+        if: ${{ success() }}
         with:
           severity: info
           details: Deploy Succeeded!
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
       - name: Unsuccessfull deployment
         uses: rjstone/discord-webhook-notify@v1.0.4
-        if: failure()
+        if: ${{ failure() }}
         with:
           severity: error
           details: Deployment Failed!
